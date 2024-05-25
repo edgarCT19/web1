@@ -1,0 +1,626 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&family=Raleway:wght@300;400;700&display=swap');
+
+/*CSS usando la metodología BEM*/
+
+:root{
+    /*Los ultimos dos numeros representan el valor alpha y dan la transparencia*/
+    --background: linear-gradient(135deg, #ee72727e 0%, #a51e1e98 100%);
+    --color-primary:#e61010b0;
+    --color-boton:red;
+    --color-secondary:#a51e1e;
+    --boton-padding:12px 25px;
+}
+
+body{
+    font-family: 'Raleway', sans-serif;
+}
+
+/*Sección del contendor*/
+.container{
+    width: 90%;
+    margin: 0 auto;
+    overflow: hidden;
+    padding: 80px 0;
+    max-width: 1200px;
+}
+
+.subtitle{
+    color: var(--color-primary) ;
+    font-size: 2.5rem;
+    margin-bottom: 35px;
+}
+
+/*Sección de la imagen de fondo del header*/
+.hero{
+    height: 100vh;
+    background-image: var(--background), url('../assets/sect.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+    background-position: center;
+    position: relative;
+}
+
+.hero .container{
+    padding: 0;
+}
+
+/*Sección del header y barra de navegación*/
+.nav{
+    /*Elementos que alinean los enlaces en la parte superior derecha*/
+    display: flex;
+    justify-content: flex-end;
+    height: 70px;
+    align-items: center;
+    font-weight: 700;
+}
+
+.nav--footer{
+    /*Elementos que trabajan al footer-nav*/
+    font-weight: 300;
+    justify-content: flex-start;
+}
+
+.nav__items{
+    color:#fff ;
+    text-decoration: none;
+    margin-right: 20px;
+    padding: 10px 15px;
+    font-weight: inherit;
+}
+
+.nav__items--cta{
+    border: 1px solid #fff;
+    border-radius: 10px;
+}
+
+.nav__items--footer{
+    padding: 10px;
+}
+
+.hero__container{
+    display: flex;
+    /*Hacemos un calculo de viewportheight*/
+    height: calc(100vh - 70px);
+    align-items: center;
+    color: #fff;
+}
+
+.hero__texts{
+    width: 80%;
+    margin-bottom: 50px;
+}
+
+.hero__title{
+    font-size: 3.2rem;
+}
+
+.hero__subtitle{
+    font-size: 2rem;
+    font-weight: 300;
+    margin: 15px 0;
+}
+
+.hero__cta{
+    display: inline-block;
+    background:#fff ;
+    padding: var(--boton-padding);
+    color: var(--color-boton);
+    text-decoration: none;
+    border-radius: 40px;
+}
+
+.hero__wave{
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 100px;
+}
+
+.modal{
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #111111bd;
+    display: flex;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity .6s ,8s;
+    --transform: translateY(-100vh);
+    --transition: transform .8s;
+}
+
+.modal__container{
+    width: 90%;
+    background-color: #fff;
+    margin: auto;
+    max-height: 90%;
+    max-width: 600px;
+    border-radius: 6px;
+    padding: 3em 2.5em;
+    display: grid;
+    gap: 1.5em;
+    place-items: center;
+    grid-auto-columns: 100%;
+    transform: var(--transform);
+    transition: var(--transition);
+}
+
+.modal__title{
+    font-size: 2.5rem;
+}
+
+.modal__close{
+    text-decoration: none;
+    color: #fff;
+    background-color: var(--color-boton);
+    border: 1px;
+    border-radius: 50%;
+    display: inline-block;
+    font-weight: 300;
+    transition: background-color 3.5;
+    margin-left: auto;
+}
+
+.btn__modal{
+    text-decoration: none;
+    color: #fff;
+    background-color: var(--color-boton);
+    padding: 12px 25px;
+    border: 1px solid ;
+    border-radius: 40px;
+    display: inline-block;
+    font-weight: 300;
+    transition: background-color 3.5;
+}
+
+.modal__close:hover{
+    color: var(--color-boton);
+    background-color: #fff;
+
+}
+
+.btn__modal:hover{
+    color: var(--color-boton);
+    background-color: #fff;
+
+}
+
+.modal--show{
+    opacity: 1;
+    pointer-events: unset;
+    transition: opacity .6s;
+    --transform: translateY(0);
+    --transition: transform .8s .8s;
+}
+
+/*Sección de about*/
+
+.presentation{
+    padding: 0;
+    text-align: center;
+}
+
+.presentation__picture {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    margin-bottom: 10px;
+    object-fit: cover;
+    object-position: top;
+}
+
+.presentation__copy {
+    width: 80%;
+    margin:0 auto;
+}
+
+.presentation__cta{
+    display: inline-block;
+    margin-top: 30px;
+    background: var(--color-boton);
+    color: #fff;
+    text-decoration: none;
+    padding: var(--boton-padding);
+    border-radius: 40px;
+}
+
+.about{
+    /*Comenzamos a utilizar el css grid (Segun tu caso)*/
+    min-height: 400px;
+    /*Estas funciones dividen a la pagina en cuadriculas y posicionan a los elementos
+    a un costado uno de otro (46:54)*/
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    row-gap: 80px;/*Espaceado de las 4 cuadriculas*/
+    justify-items: center;
+    align-items: center;
+}
+
+.about__img{
+    text-align: center;
+}
+
+.about__img--left{
+    text-align: left;
+}
+
+.about__picture{
+    max-width: 80%;
+}
+
+.about__paragraph{
+      margin-bottom: 20px;
+      line-height: 1.5;
+      font-weight: 300;
+}
+
+/*Sección de Projects*/
+
+.projects{
+    background: #f2f2f2;
+}
+.projects__grid{
+    display: grid;
+    height: 550px;
+    /*Grid con template-areas que funciona al estilo de un array*/
+    grid-template-areas: 
+    "img1 img1 img2 img3 "
+    "img1 img1 img4 img5 ";
+    gap: 10px;/*Espaceado entre filas*/
+}
+
+.projects__items{
+    position: relative;
+    width: 100%;
+    height: 100%;
+   overflow: hidden;
+}
+
+.projects__img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    cursor: pointer;
+}
+
+/*Pseudoclase para ayudar a posicionar a las imagenes del grid en el array*/
+.projects__items:nth-of-type(1){
+    grid-area: img1;
+}
+
+.projects__items:nth-of-type(2){
+    grid-area: img2;
+}
+
+.projects__items:nth-of-type(3){
+    grid-area: img3;
+}
+
+.projects__items:nth-of-type(4){
+    grid-area: img4;
+}
+
+.projects__items:nth-of-type(5){
+    grid-area: img5;
+}
+/*________________________________________________________________________*/
+
+.projects__hover{
+    position: absolute;   
+    background-color: #dc143c8c;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    color: #fff;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    transform: translateX(100%);
+    cursor: pointer;
+    transition: 0.5s ease-in-out;
+    -webkit-transition: 0.5s ease-in-out;
+}
+
+/*Para hacer el efecto cuando se pasa el mouse, usamos la pseudoclase hover*/
+.projects__items:hover .projects__hover{
+     transform: translateX(0%);
+}
+
+.projects__icon{
+    margin-top: 10px;
+    font-size: 30px;
+    color: #fff;
+}
+
+/*Sección de testimonios*/
+
+.testimony__grid{
+     width: 100%;
+     display: grid;
+     grid-template-columns: 1fr 1fr;
+     gap: 30px;
+}
+
+.testimony__items{
+    width: 95%;
+    margin: 0 auto;
+    background-color: var(--color-primary);
+    box-shadow: 0 8px 10px rgba(66, 66, 66, .5);
+    border-radius: 7px;
+    padding: 30px 25px;
+    color: #fff;
+    margin-bottom: 50px;
+}
+
+.testimony__person{
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.testimony__img{
+    width: 100px;
+    min-width: 100px;
+    height: 100px;
+    object-fit: cover;
+    object-position: top;
+    border-radius: 50%;
+    border: 3px solid #fff;
+    margin-right: 30px;
+}
+
+.testimony__name{
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+}
+
+.testimony__verification{
+    color: #000;
+    font-weight: 700;
+}
+
+.testimony__review{
+    font-weight: 300;
+}
+
+/*footer*/
+
+.footer{
+    background-color: var(--color-secondary);
+}
+
+.footer__grid{
+    display: grid;
+    grid-template-columns: 3fr 2fr;
+    align-items: center;
+}
+
+.footer__title{
+    font-weight: 400;
+    color: #fff;
+    font-size: 2.5rem;
+    margin-bottom: 30px;
+    text-align: center;
+}
+
+.footer__icons{
+    display: flex;
+    justify-content: space-evenly;/*Distribucion equitativa de los elementos*/
+
+}
+
+.footer__container-icons{
+    display: inline-block;
+    width: 60px;
+    height: 60px;
+    color: #fff;
+    text-align: center;
+    border: 1px solid #fff;
+    border-radius: 50%;
+}
+
+.footer__icon{
+    color: #fff;
+    font-size: 30px;
+    text-decoration: none;
+    line-height: 60px;/*Alineación vertical*/
+}
+
+/*Diseño responsivo adapatable a dispositivos móviles*/
+
+@media screen and (max-width: 800px){
+    :root{
+        --boton-padding:10px 23px;
+    }
+
+    .nav{
+        justify-content: space-around;/*Esta propiedad la podemos usar porque estamos usando flexbox*/
+
+    }
+
+    .nav__items{
+        font-weight: 400;
+        border-bottom: 1px solid #fff;
+        margin-right: 0;
+    }
+
+    .nav__items--cta{
+        border: none;
+    }
+
+    .nav__items--footer{
+        border: none;
+    }
+
+    .hero__texts{
+        width: 100%;
+        margin-bottom: 80px;
+    }
+
+    .hero__title{
+        font-size: 2.5rem;
+    }
+
+    .hero__subtitle{
+        font-size: 1.5rem;
+    }
+
+    .modal__container{
+        padding: 1em 1.5em;
+    }
+
+    .modal__title{
+        font-size: 2rem;
+    }
+
+    /*seccion about*/
+    .presentation__copy{
+        width: 100%;
+    }
+
+    .about{
+        grid-template-columns: 1fr;/*En responsive solo usamos una fraccion en este caso*/
+    }
+
+    .about.container{
+        padding-top: 30px;
+    }
+
+    .about__img--left{
+        text-align: center;
+    }
+
+    .about__texts:last-child{
+        grid-row: 3/4;
+    }
+
+    /*Sección de mis proyectos*/ 
+
+    .projects__grid{
+       /*En el grid aanterior se usaba en el array 3 columnas pero en rsponsive usaremos 2*/
+        grid-template-areas:
+        "img1 img1 img2 img2" 
+        "img1 img1 img3 img3"
+        "img4 img4 img5 img5";
+    }
+
+    /*Sección de testimonios o testimony*/
+
+    .testimony__grid{
+        grid-template-columns: 1fr;
+        /*gap: 30px;*/
+    }
+
+    .testimony__items{
+        margin-bottom: 30px;
+    }
+
+    /*Sección del footer*/
+
+    .footer__grid{
+        grid-template-columns: 1fr;
+    }
+
+    .footer__contact{
+        grid-row: 1/2;
+    }
+}
+
+@media screen and (max-width: 500px){
+    :root{
+        --boton-padding: 18px 35px;
+    }
+
+    .nav{
+        flex-wrap: wrap;
+        justify-content: space-evenly;
+        margin-top: 10px;
+    }
+
+    .nav__items{
+        padding: 0 10px;
+        border: 0;
+    }
+
+    .hero__texts{
+        text-align: center;
+        margin-bottom: 100px;
+    }
+
+    .hero__title{
+        font-size: 2rem;
+    }
+
+    .modal__container{
+        padding: 1.5em .5em;
+    }
+
+    .modal__img{
+        width: 90%;
+        height: 69%;
+    }
+
+    .modal__title{
+        font-size: 1.5rem;
+    }
+
+    /*Sección about*/
+
+    .presentation__picture{
+        width: 120px;
+        height: 120px;
+    }
+
+    .about{
+        row-gap: 60px;
+    }
+
+    .about.container{
+        padding-top: 30px;
+    }
+
+    /*Sección de mis proyectos*/
+    
+    .projects__grid{
+        grid-template-areas: 
+        "img1"
+        "img2"
+        "img3"
+        "img4"
+        "img5";
+        height: auto;
+        grid-template-rows: repeat(5, 250px);
+        grid-auto-rows: 250px;
+        gap: 50px;
+    }
+
+    /*Testimony*/
+
+    .subtitle{
+        text-align: center;
+    }
+
+    .testimony__items{
+        padding: 30px 15px;
+    }
+
+    .testimony__person{
+        flex-direction: column;
+    }
+
+    .testimony__verification{
+        text-align: center;
+    }
+
+    .testimony__img{
+        margin: 0;
+        margin-bottom: 20px;
+    }
+
+}
